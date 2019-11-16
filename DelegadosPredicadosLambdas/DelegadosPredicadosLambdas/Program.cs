@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DelegadosPredicadosLambdas
 {
@@ -15,9 +16,32 @@ namespace DelegadosPredicadosLambdas
 
             ElDelegado = new ObjetoDelegado(MensajeDespedida.SaludoDespedida);
             ElDelegado();
+
+
+            //lista de preducados
+            List<int> ListaNumeros = new List<int>();
+            ListaNumeros.AddRange(new int[] {1,2,3,4,5,6,7,8,9 });
+            Predicate<int> elDelegadoPred = new Predicate<int>(DamePares);
+            List<int> numPares = ListaNumeros.FindAll(elDelegadoPred);
+
+            foreach (var num in numPares)
+            {
+                Console.WriteLine(num);
+            }
+
+
         }
         //definicion del objeto delegado
         delegate void ObjetoDelegado();
+
+
+
+
+        static bool DamePares(int num)
+        {
+            if (num % 2 == 0) return true;
+            else return false;
+        }
     }
 
     class mensajeBienvenida
