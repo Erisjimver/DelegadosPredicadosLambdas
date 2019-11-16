@@ -29,6 +29,25 @@ namespace DelegadosPredicadosLambdas
                 Console.WriteLine(num);
             }
 
+            //lista predicados persona
+            List<Personas> gente = new List<Personas>();
+            Personas P1 = new Personas();
+            P1.Nombre = "Israel";
+            P1.Edad = 26;
+            Personas P2 = new Personas();
+            P1.Nombre = "Juan";
+            P1.Edad = 12;
+
+            Personas P3 = new Personas();
+            P1.Nombre = "Maria";
+            P1.Edad = 14;
+            gente.AddRange(new Personas[] {P1,P2,P3 });
+
+            Predicate<Personas> elPredicado = new Predicate<Personas>(ExisteIsrael);
+            bool existe = gente.Exists(elPredicado);
+            if (existe) Console.WriteLine("hay personas que se llaman Israel");
+            else Console.WriteLine("No hay personas que se llaman Israel");
+
 
         }
         //definicion del objeto delegado
@@ -36,14 +55,37 @@ namespace DelegadosPredicadosLambdas
 
 
 
-
+        //estatis de numeros pares ejemplo predicado 1
         static bool DamePares(int num)
         {
             if (num % 2 == 0) return true;
             else return false;
         }
+
+        //ejempli predicado dos existe X persona
+
+        static bool ExisteIsrael(Personas persona)
+        {
+            if (persona.Nombre == "Israel") return true;
+            else return false;
+        }
+        static bool Existemayor(Personas persona)
+        {
+            if (persona.Edad >=18) return true;
+            else return false;
+        }
     }
 
+    class Personas
+    {
+
+        private string nombre;
+        private int edad;
+
+        public string Nombre { get => nombre; set => nombre = value; }
+        public int Edad { get => edad; set => edad = value; }
+
+    }
     class mensajeBienvenida
     {
         public static void SaludoBienvenida()
@@ -51,6 +93,7 @@ namespace DelegadosPredicadosLambdas
             Console.WriteLine("Hola acabo de llegar. Que tal");
         }
     }
+    
 
     class MensajeDespedida
     {
