@@ -34,17 +34,21 @@ namespace DelegadosPredicadosLambdas
             Personas P1 = new Personas();
             P1.Nombre = "Israel";
             P1.Edad = 26;
+
             Personas P2 = new Personas();
-            P1.Nombre = "Juan";
-            P1.Edad = 12;
+            P2.Nombre = "Juan";
+            P2.Edad = 12;
 
             Personas P3 = new Personas();
-            P1.Nombre = "Maria";
-            P1.Edad = 14;
+            P3.Nombre = "Maria";
+            P3.Edad = 14;
+
             gente.AddRange(new Personas[] {P1,P2,P3 });
 
             Predicate<Personas> elPredicado = new Predicate<Personas>(ExisteIsrael);
+
             bool existe = gente.Exists(elPredicado);
+
             if (existe) Console.WriteLine("hay personas que se llaman Israel");
             else Console.WriteLine("No hay personas que se llaman Israel");
 
