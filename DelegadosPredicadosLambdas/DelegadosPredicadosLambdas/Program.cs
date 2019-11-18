@@ -37,11 +37,11 @@ namespace DelegadosPredicadosLambdas
 
             Personas P2 = new Personas();
             P2.Nombre = "Juan";
-            P2.Edad = 12;
+            P2.Edad = 26;
 
             Personas P3 = new Personas();
             P3.Nombre = "Maria";
-            P3.Edad = 14;
+            P3.Edad = 26;
 
             gente.AddRange(new Personas[] {P1,P2,P3 });
 
@@ -60,7 +60,15 @@ namespace DelegadosPredicadosLambdas
             if (existe2) Console.WriteLine("Hay personas mayores de edad");
             else Console.WriteLine("No hay personas mayores de edad");
 
+
+            CompararPersonas compararEedad = (persona1, persona2) => persona1 == persona2;
+            Console.WriteLine(compararEedad(P1.Edad,P2.Edad));
         }
+
+        //objeto delegado funcion lambda
+        public delegate bool CompararPersonas(int  nombre1, int nombre2);
+
+  
         //definicion del objeto delegado
         delegate void ObjetoDelegado();
 
