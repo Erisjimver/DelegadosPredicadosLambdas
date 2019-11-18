@@ -53,6 +53,13 @@ namespace DelegadosPredicadosLambdas
             else Console.WriteLine("No hay personas que se llaman Israel");
 
 
+            Predicate<Personas> elPredicado2 = new Predicate<Personas>(Existemayor);
+
+            bool existe2 = gente.Exists(elPredicado2);
+
+            if (existe2) Console.WriteLine("Hay personas mayores de edad");
+            else Console.WriteLine("No hay personas mayores de edad");
+
         }
         //definicion del objeto delegado
         delegate void ObjetoDelegado();
